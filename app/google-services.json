@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "999434753841",
+    "firebase_url": "https://instapartyapp.firebaseio.com",
+    "project_id": "instapartyapp",
+    "storage_bucket": "instapartyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999434753841:android:a16974c14d8e527d",
+        "android_client_info": {
+          "package_name": "com.digitalhouse.instapartyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "999434753841-ro21mpl8agru90piobd59kpom5ongbko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.digitalhouse.instapartyapp",
+            "certificate_hash": "bad78900839c450f1c3e712ab58baec20b3d74a6"
+          }
+        },
+        {
+          "client_id": "999434753841-pcnfrvtcc2v1m7c5p8m7itn4ohhrq45p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8K2ACOxDtK-2JRmITxC49uelK8hUnJoA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "999434753841-pcnfrvtcc2v1m7c5p8m7itn4ohhrq45p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
