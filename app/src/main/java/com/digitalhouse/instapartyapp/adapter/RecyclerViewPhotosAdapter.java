@@ -18,6 +18,10 @@ public class RecyclerViewPhotosAdapter extends RecyclerView.Adapter<RecyclerView
 
     private List<Photos> photosList;
 
+    public RecyclerViewPhotosAdapter(List<Photos> photosList) {
+        this.photosList = photosList;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
