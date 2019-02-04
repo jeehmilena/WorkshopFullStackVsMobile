@@ -143,7 +143,7 @@ public class HomeActivity extends AppCompatActivity {
             StorageReference childRef = imagesRef.child(photoFileName);
 
             InputStream stream;
-            stream = new FileInputStream(new File(photoFileName));
+            stream = new FileInputStream(new File(photoFilePath));
             UploadTask uploadTask = childRef.putStream(stream);
 
 
