@@ -148,11 +148,11 @@ public class HomeActivity extends AppCompatActivity {
 
 
             uploadTask.addOnFailureListener(exception ->
-                    Log.i("LOG", "Deu ruim: " + exception.getMessage())
+                    Log.i("LOG", "Não foi possivel efetuar o upload: " + exception.getMessage())
             ).addOnSuccessListener(taskSnapshot -> {
 
 
-                Toast.makeText(HomeActivity.this, "Deu bom o upload", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Upload efetuado com sucesso!", Toast.LENGTH_SHORT).show();
 
                 childRef.getDownloadUrl().addOnSuccessListener(uri -> {
                             String name = taskSnapshot.getMetadata().getName();
