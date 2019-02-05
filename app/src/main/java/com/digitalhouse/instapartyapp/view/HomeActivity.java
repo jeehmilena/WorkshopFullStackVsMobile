@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,8 @@ import android.widget.Toast;
 import com.digitalhouse.instapartyapp.R;
 import com.digitalhouse.instapartyapp.adapter.RecyclerViewPhotosAdapter;
 import com.digitalhouse.instapartyapp.model.Photos;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,11 +46,11 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerViewPhotosAdapter adapter;
     private FirebaseStorage firebaseStorage;
-    private ArrayList<Photos> photosList;
+    private ArrayList<Photos> photosList = new ArrayList<>();
     private ProgressBar progressBar;
     private String photoFilePath;
     private String photoFileName;
-
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +67,15 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void initViews(){
+    private void initViews() {
         btnAdicionar = findViewById(R.id.floatingActionButtonAdd);
         recyclerView = findViewById(R.id.recyclerView);
         adapter = new RecyclerViewPhotosAdapter(photosList);
         firebaseStorage = FirebaseStorage.getInstance();
-        photosList = new ArrayList<>();
         progressBar = findViewById(R.id.progressbar);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
     }
 
     private File createImageFile() throws IOException {
@@ -141,6 +146,7 @@ public class HomeActivity extends AppCompatActivity {
         try {
             StorageReference imagesRef = firebaseStorage.getReference().child("images");
             StorageReference childRef = imagesRef.child(photoFileName);
+            databaseReference = FirebaseDatabase.getInstance().getReference("images");
 
             InputStream stream;
             stream = new FileInputStream(new File(photoFilePath));
@@ -157,6 +163,8 @@ public class HomeActivity extends AppCompatActivity {
                 childRef.getDownloadUrl().addOnSuccessListener(uri -> {
                             String name = taskSnapshot.getMetadata().getName();
                             photosList.add(new Photos(uri.toString(), name));
+                            String uploadId = databaseReference.push().getKey();
+                            databaseReference.child(uploadId).setValue(uri.toString());
                             adapter.update(photosList);
                             progressBar.setVisibility(View.GONE);
                         }
@@ -167,4 +175,5 @@ public class HomeActivity extends AppCompatActivity {
             Log.e("LOG", "saveImageOnFirebaseStorage: ", e);
         }
     }
+
 }
