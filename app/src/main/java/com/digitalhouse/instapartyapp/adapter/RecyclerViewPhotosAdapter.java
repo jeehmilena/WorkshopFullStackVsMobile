@@ -59,7 +59,8 @@ public class RecyclerViewPhotosAdapter extends RecyclerView.Adapter<RecyclerView
         }
 
         public void bind(Photos img){
-            Picasso.get().load(img.getUrlPhoto()).placeholder(R.drawable.photo).into(photo);
+            Picasso.get().load(img.getUrlPhoto()).placeholder(R.drawable.photo)
+                    .resize(500,500).into(photo);
             titulo.setText(img.getTituloPhoto());
         }
 

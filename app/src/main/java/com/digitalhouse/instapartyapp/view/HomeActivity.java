@@ -23,8 +23,11 @@ import android.widget.Toast;
 import com.digitalhouse.instapartyapp.R;
 import com.digitalhouse.instapartyapp.adapter.RecyclerViewPhotosAdapter;
 import com.digitalhouse.instapartyapp.model.Photos;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -37,7 +40,9 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
     private static final int REQUEST_CAMERA_PERMISSION = 100;
@@ -58,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         initViews();
+        getAllPhotos();
 
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,8 +169,12 @@ public class HomeActivity extends AppCompatActivity {
                 childRef.getDownloadUrl().addOnSuccessListener(uri -> {
                             String name = taskSnapshot.getMetadata().getName();
                             photosList.add(new Photos(uri.toString(), name));
-                            String uploadId = databaseReference.push().getKey();
-                            databaseReference.child(uploadId).setValue(uri.toString());
+
+                            List<Photos> photosList = new ArrayList<>();
+                            Photos photos = new Photos(uri.toString(), name);
+                            // photosList.add(photos);
+                            DatabaseReference imgReference = databaseReference.push();
+                            imgReference.setValue(photos);
                             adapter.update(photosList);
                             progressBar.setVisibility(View.GONE);
                         }
@@ -174,6 +184,32 @@ public class HomeActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             Log.e("LOG", "saveImageOnFirebaseStorage: ", e);
         }
+    }
+
+    private void getAllPhotos() {
+        databaseReference = FirebaseDatabase.getInstance().getReference("images");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //String name = postSnapshot.getKey();
+                    //String url = postSnapshot.getValue(String.class);
+                    Map<String, String> mapPhotos = (Map<String, String>) postSnapshot.getValue();
+                    Photos photo = new Photos(mapPhotos.get("urlPhoto"), mapPhotos.get("tituloPhoto"));
+                    photosList.add(photo);
+                }
+
+                adapter = new RecyclerViewPhotosAdapter(photosList);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(HomeActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
