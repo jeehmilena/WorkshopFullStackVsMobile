@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="153dp"
+        android:layout_height="122dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="120dp"
@@ -31,7 +31,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum"
+        android:text="Full Stack vs Mobile!
+        Olhe, fotografe, guarde, compartilhe! "
         android:textAlignment="center"
         android:textColor="@color/colorTextLight"
         android:textSize="20sp"

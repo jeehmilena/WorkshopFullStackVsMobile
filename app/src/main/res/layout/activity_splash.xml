@@ -30,7 +30,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="InstaPartyApp"
+        android:text="Full Stack VS Mobile"
         android:textAlignment="center"
         android:textColor="#FFF"
         android:textSize="30sp"

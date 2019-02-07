@@ -63,7 +63,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         initViews();
-        getAllPhotos();
 
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +78,10 @@ public class HomeActivity extends AppCompatActivity {
         adapter = new RecyclerViewPhotosAdapter(photosList);
         firebaseStorage = FirebaseStorage.getInstance();
         progressBar = findViewById(R.id.progressbar);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
 
@@ -170,9 +171,8 @@ public class HomeActivity extends AppCompatActivity {
                             String name = taskSnapshot.getMetadata().getName();
                             photosList.add(new Photos(uri.toString(), name));
 
-                            List<Photos> photosList = new ArrayList<>();
+                           // List<Photos> photosList = new ArrayList<>();
                             Photos photos = new Photos(uri.toString(), name);
-                            // photosList.add(photos);
                             DatabaseReference imgReference = databaseReference.push();
                             imgReference.setValue(photos);
                             adapter.update(photosList);

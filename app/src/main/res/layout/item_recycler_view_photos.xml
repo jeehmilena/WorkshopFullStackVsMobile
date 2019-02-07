@@ -24,7 +24,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/photo"
+            android:src="@drawable/gallery"
             app:layout_constraintBottom_toTopOf="@+id/txtTitulo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
