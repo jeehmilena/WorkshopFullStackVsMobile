@@ -31,8 +31,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Full Stack vs Mobile!
-        Olhe, fotografe, guarde, compartilhe! "
+        android:text="Full Stack vs Mobile! Olhe, fotografe, guarde, compartilhe! "
         android:textAlignment="center"
         android:textColor="@color/colorTextLight"
         android:textSize="20sp"
