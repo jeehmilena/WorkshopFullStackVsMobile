@@ -12,7 +12,6 @@ import java.util.TimerTask;
 public class SplashActivity extends AppCompatActivity {
     private Timer timer = new Timer();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

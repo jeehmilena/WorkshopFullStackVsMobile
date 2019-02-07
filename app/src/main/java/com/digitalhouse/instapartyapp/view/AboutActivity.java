@@ -10,21 +10,13 @@ import com.digitalhouse.instapartyapp.R;
 
 public class AboutActivity extends AppCompatActivity {
 
-    private Button btnInicar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        btnInicar = findViewById(R.id.buttonIniciar);
-
-        btnInicar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AboutActivity.this, HomeActivity.class));
-            }
-        });
+        //Vamos desenvolver juntas
 
     }
 }

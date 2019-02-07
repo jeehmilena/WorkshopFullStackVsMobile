@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AboutActivity"
-    android:background="@color/colorAccent">
+    tools:context=".view.AboutActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -16,7 +15,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:src="@drawable/gallery"
+        android:src="@drawable/camerasimples"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,9 +30,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Full Stack vs Mobile! Olhe, fotografe, guarde, compartilhe! "
+        android:text="LOREM IPSUM LOREM IPSUM LOREM IPSUM "
         android:textAlignment="center"
-        android:textColor="@color/colorTextLight"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonIniciar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,9 +48,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="180dp"
-        android:backgroundTint="@color/colorPrimary"
         android:text="Iniciar"
-        android:textColor="@color/colorTextLight"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

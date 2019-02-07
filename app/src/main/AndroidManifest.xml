@@ -13,8 +13,8 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="Full Stack VS Mobile"
-        android:roundIcon="@drawable/logo"
+        android:label="SEM TITULO"
+        android:roundIcon="@drawable/camerasimples"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity

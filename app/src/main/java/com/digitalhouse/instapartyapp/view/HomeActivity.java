@@ -62,14 +62,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        initViews();
 
-        btnAdicionar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openCameraIntent();
-            }
-        });
+        //Vamos desenvolver juntas
+
+
     }
 
     private void initViews() {
